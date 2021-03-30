@@ -49,15 +49,19 @@ RUN conda clean -ya
 RUN conda install -y mkl-include cmake cffi typing cython
 RUN conda install -y -c mingfeima mkldnn
 # RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary azureml_core==1.10.0 azureml-sdk==1.10.0 albumentations pretrainedmodels efficientnet_pytorch scikit-image==0.15  yacs git+https://github.com/qiuzhongwei-USTB/ResNeSt.git tensorboard pydicom
-RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albumentations==0.4.6 pretrainedmodels efficientnet_pytorch scikit-image==0.15  yacs git+https://github.com/qiuzhongwei-USTB/ResNeSt.git tensorboard pydicom joblib mmcv
+RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albumentations==0.4.6 pretrainedmodels efficientnet_pytorch scikit-image==0.15  yacs git+https://github.com/qiuzhongwei-USTB/ResNeSt.git tensorboard pydicom joblib
 # RUN pip install --upgrade pipi
 RUN pip install pynrrd
 
 # Install pytorch
-RUN conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+# RUN conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+RUN conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=10.1 -c pytorch
 RUN conda install -y -c conda-forge pillow=6.2.1
+
+RUN pip install mmcv-full==1.2.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+RUN pip install mmsegmentation
 
 # Set CUDA_ROOT
 RUN export CUDA_HOME="/usr/local/cuda"
 
-RUN echo "aml_rsna_docker dockerfile finished!"
+RUN echo "azureml dockerfile finished!"
