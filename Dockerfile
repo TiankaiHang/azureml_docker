@@ -39,7 +39,7 @@ ENV PATH /opt/miniconda/bin:$PATH
 RUN conda update -n base conda
 
 #ImportError: No module named ruamel.yaml
-RUN conda install -c r -y conda python=3.6.2 pip=20.1.1
+RUN conda install -c r -y conda python=3.7 pip=20.1.1
 
 # Install general libraries
 RUN conda install -y numpy scipy ipython mkl scikit-learn matplotlib pandas setuptools Cython h5py graphviz
@@ -56,9 +56,9 @@ RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albume
 RUN conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=10.1 -c pytorch
 RUN conda install -y -c conda-forge pillow=6.2.1
 
-RUN pip install mmcv-full==1.2.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+RUN pip install mmcv-full==1.3.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 RUN pip install mmsegmentation
-
+RUN pip install terminaltables
 # Set CUDA_ROOT
 RUN export CUDA_HOME="/usr/local/cuda"
 
