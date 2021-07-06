@@ -59,6 +59,14 @@ RUN conda install -y -c conda-forge pillow=6.2.1
 RUN pip install mmcv-full==1.3.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 RUN pip install mmsegmentation
 RUN pip install terminaltables
+
+# install mmediting
+RUN git clone https://github.com/open-mmlab/mmediting.git /mmediting
+WORKDIR /mmediting
+
+RUN pip install cython --no-cache-dir
+RUN pip install --no-cache-dir -e .
+
 # Set CUDA_ROOT
 RUN export CUDA_HOME="/usr/local/cuda"
 
