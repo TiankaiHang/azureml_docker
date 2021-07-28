@@ -53,16 +53,19 @@ RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albume
 
 # Install pytorch
 # RUN conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
-RUN conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=10.1 -c pytorch
+RUN pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
 RUN conda install -y -c conda-forge pillow=6.2.1
 
-RUN pip install mmcv-full==1.3.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+RUN pip install mmcv-full==1.3.0 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 RUN pip install mmsegmentation
 RUN pip install terminaltables
 
 # install mmediting
 RUN git clone https://github.com/open-mmlab/mmediting.git /mmediting
 WORKDIR /mmediting
+RUN pip install -r requirements.txt
+RUN pip install -v -e .
+RUN pip install lpips
 
 RUN pip install cython --no-cache-dir
 RUN pip install --no-cache-dir -e .
