@@ -61,8 +61,9 @@ RUN pip install mmsegmentation
 RUN pip install terminaltables
 
 # install mmediting
-RUN git clone https://github.com/open-mmlab/mmediting.git /mmediting
-WORKDIR /mmediting
+# RUN git clone https://github.com/open-mmlab/mmediting.git /mmediting
+RUN git clone https://TiankaiHang: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@github.com/TiankaiHang/vsr.git /VSR
+WORKDIR /VSR
 RUN pip install -r requirements.txt
 RUN pip install -v -e .
 RUN pip install lpips
