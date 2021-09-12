@@ -56,7 +56,7 @@ RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albume
 RUN pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
 RUN conda install -y -c conda-forge pillow=6.2.1
 
-RUN pip install mmcv-full==1.3.0 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+RUN pip install mmcv-full==1.3.10 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 RUN pip install mmsegmentation
 RUN pip install terminaltables
 
