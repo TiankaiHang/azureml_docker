@@ -56,18 +56,16 @@ RUN pip install boto3 addict tqdm regex pyyaml opencv-python torchsummary albume
 RUN pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
 RUN conda install -y -c conda-forge pillow=6.2.1
 
-RUN pip install mmcv-full==1.3.10 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
-RUN pip install mmsegmentation
 RUN pip install terminaltables
 
 # install mmediting
-RUN conda clean --all
+# RUN git clone https://github.com/open-mmlab/mmediting.git /mmediting
+RUN git clone https://TiankaiHang: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@github.com/TiankaiHang/vsr.git /VSR
 WORKDIR /VSR
 ENV FORCE_CUDA="1"
-RUN git clone https://TiankaiHang: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@github.com/TiankaiHang/vsr.git /VSR
+RUN pip install mmcv-full==1.3.10 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 RUN pip install -r requirements.txt
 RUN pip install lpips
-
 RUN pip install --no-cache-dir -e .
 
 # Set CUDA_ROOT
