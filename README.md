@@ -1,6 +1,6 @@
 # Some useful dockerfiles for Deep Learning
 
-Supported: torch171_cuda110
+Supported: 
 
 - torch1.10+cuda11.1  
     - horovod
