@@ -1,9 +1,9 @@
 # https://hub.docker.com/r/pytorch/pytorch/tags
 
-# dvel mode has nvcc while runtime has not
+# dvel mode has nvcc while runtime does not
 FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel
 
-# install ssome basic tools
+# install some basic tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
         --allow-change-held-packages \
         build-essential \
