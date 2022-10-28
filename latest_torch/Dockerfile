@@ -29,4 +29,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libosmesa6-dev \
         net-tools
 
+# upgrade
+RUN pip install torch torchvision torchaudio --upgrade --extra-index-url https://download.pytorch.org/whl/cu113
 
+# apex
+RUN pip install packaging
+RUN git clone https://github.com/NVIDIA/apex.git && \
+    cd apex && \
+    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" . &&\
+    rm -rf ../apex
