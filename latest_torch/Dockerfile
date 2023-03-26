@@ -1,7 +1,7 @@
 # https://hub.docker.com/r/pytorch/pytorch/tags
 
 # dvel mode has nvcc while runtime does not
-FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel
+FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-devel
 
 # install some basic tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -29,12 +29,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libosmesa6-dev \
         net-tools
 
-# upgrade
-RUN pip install torch torchvision torchaudio --upgrade --extra-index-url https://download.pytorch.org/whl/cu113
+RUN export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+# Set timezone
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# very important!!!!!!!
+RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "export PATH=/opt/conda/bin:$PATH" >> ~/.bashrc
+# very important!!!!!!!
+ENV PATH /opt/conda/bin:$PATH
+RUN conda update -n base conda
 
-# apex
-RUN pip install packaging
-RUN git clone https://github.com/NVIDIA/apex.git && \
-    cd apex && \
-    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" . &&\
-    rm -rf ../apex
