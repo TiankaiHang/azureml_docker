@@ -40,3 +40,9 @@ RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
 ENV PATH /opt/conda/bin:$PATH
 RUN conda update -n base conda
 
+# for instructpix2pix
+RUN conda env create -f https://github.com/timothybrooks/instruct-pix2pix/raw/main/environment.yaml
+# RUN conda init bash
+RUN echo "conda activate ip2p" >> ~/.bashrc
+
+RUN echo "Docker Built Successfully"
