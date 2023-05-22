@@ -36,13 +36,14 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "export PATH=/opt/conda/bin:$PATH" >> ~/.bashrc
-# very important!!!!!!!
-ENV PATH /opt/conda/bin:$PATH
-RUN conda update -n base conda
 
 # for instructpix2pix
 RUN conda env create -f https://github.com/timothybrooks/instruct-pix2pix/raw/main/environment.yaml
-# RUN conda init bash
+RUN conda init bash
 RUN echo "conda activate ip2p" >> ~/.bashrc
+# very important!!!!!!!
+ENV PATH /opt/conda/bin:$PATH
+
+RUN /opt/conda/envs/ip2p/bin/python -c "import pytorch_lightning as pl; print(pl.__version__)"
 
 RUN echo "Docker Built Successfully"
