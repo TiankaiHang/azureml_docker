@@ -1,0 +1,12 @@
+{
+    "Required":
+    {
+        "apt": [
+            "openssl",
+            "supervisor",
+            "systemd"
+        ],
+        "pip": [],
+        "scripts": ["supervisord"]
+    }
+}

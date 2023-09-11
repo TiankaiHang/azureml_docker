@@ -1,0 +1,28 @@
+# Singularity Container Validator
+Test framework for running shell and python test scripts in containers.
+
+## Usage
+
+## Config Format
+{
+    "Required":{
+        "apt": [],
+        "pip": [],
+        "commands":[],
+        "scripts":[]
+    },
+    "Recommended":{
+        "apt": [],
+        "pip": [],
+        "commands":[],
+        "scripts":[]
+    }
+}
+
+
+
+Job Requirements
+
+GPU Requirements
+
+Service Requirements

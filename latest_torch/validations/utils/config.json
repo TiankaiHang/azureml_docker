@@ -1,0 +1,209 @@
+{
+    "COMMON":{
+      "Required":{
+        "apt": [
+            "autossh",
+            "blobfuse>=1.4.1",
+            "cifs-utils",
+            "fuse",
+            "git",
+            "jq",
+            "mergerfs",
+            "netbase",
+            "nfs-common",
+            "openssh-server",
+            "openssl",
+            "pdsh",
+            "supervisor",
+            "systemd"
+        ],
+        "pip": [],
+        "other":["tini", "gosu"],
+        "scripts":{
+          "common":[],
+          "build":["supervisord"],
+          "test":["supervisord", "ssh", "profile"],
+          "runtime":["cuda-version","user", "profile"]
+        }
+      },
+      "Recommended":{
+        "apt": ["criu"],
+        "pip": ["jupyter", "tensorboard", "numpy"],
+        "other":[],
+        "scripts":{
+          "common":[],
+          "build":["tensorboard"],
+          "test":["jupyter", "tensorboard"],
+          "runtime":[]
+        }
+      }
+    },
+    "PYTORCH":{
+      "Required":{
+          "apt": [],
+          "pip": ["torch", "torchvision"],
+          "other":[],
+          "scripts":{
+            "common":["pytorch"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+      },
+      "NVIDIA":{
+        "Required":{
+          "apt": ["cuda", "cuda-nvcc", "libcudnn", "cuda-libraries", "libibverbs1", "ibverbs-providers"],
+          "pip": ["torch", "torchvision"],
+          "other":["nvcc"],
+          "scripts":{
+            "common":["pytorch", "pytorch-cuda"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+        },
+        "A100": {
+          "Required":{
+            "apt": ["cuda", "cuda-nvcc", "libcudnn", "libibverbs1", "ibverbs-providers"],
+            "pip": ["torch"],
+            "other":["nvcc"],
+            "scripts":{
+              "common":["pytorch", "pytorch-cuda"],
+              "build":[],
+              "test":[],
+              "runtime":[]
+            }
+          }
+        }
+      },
+      "AMD":{
+        "Required":{
+          "apt": ["rocm-clang-ocl",
+            "rocm-cmake",
+            "rocm-dbgapi",
+            "rocm-dev",
+            "rocm-device-libs",
+            "rocm-gdb",
+            "rocm-libs",
+            "rocm-opencl",
+            "rocm-opencl-dev",
+            "rocm-smi-lib",
+            "rocm-utils",
+            "rocminfo",
+            "libibverbs1",
+            "ibverbs-providers"],
+          "pip": ["torch", "torchvision"],
+          "other":[],
+          "scripts":{
+            "common":["pytorch", "rocm"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+        }
+      }
+    },
+    "TENSORFLOW":{
+      "Required":{
+          "apt": [],
+          "pip": ["tensorflow"],
+          "other":[],
+          "scripts":{
+            "common":["tensorflow"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+      },
+      "NVIDIA":{
+        "Required":{
+          "apt": ["cuda", "cuda-nvcc", "libcudnn", "cuda-license", "libibverbs1", "ibverbs-providers"],
+          "pip": ["tensorflow-gpu"],
+          "other":[],
+          "scripts":{
+            "common":["tensorflow"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+        },
+        "A100": {
+          "Required":{
+            "apt": ["cuda", "cuda-nvcc", "libcudnn", "libibverbs1", "ibverbs-providers"],
+            "pip": ["torch"],
+            "other":[],
+            "scripts":{
+              "common":["tensorflow"],
+              "build":[],
+              "test":[],
+              "runtime":[]
+            }
+          }
+        }
+      },
+      "AMD":{
+        "Required":{
+          "apt": ["rocm-clang-ocl",
+            "rocm-cmake",
+            "rocm-dbgapi",
+            "rocm-dev",
+            "rocm-device-libs",
+            "rocm-gdb",
+            "rocm-libs",
+            "rocm-opencl",
+            "rocm-opencl-dev",
+            "rocm-smi-lib",
+            "rocm-utils",
+            "rocminfo",
+            "libibverbs1"],
+          "pip": ["tensorflow"],
+          "other":[],
+          "scripts":{
+            "common":["tensorflow", "rocm"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+        }
+      }
+    },
+    "DEEPSPEED":{
+      "Required":{
+          "apt": [],
+          "pip": ["torch", "torchvision", "apex", "deepspeed", "allennlp"],
+          "other":["deepspeed"],
+          "scripts":{
+            "common":["deepspeed", "pytorch"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+      },
+      "NVIDIA":{
+        "Required":{
+          "apt": ["cuda", "cuda-nvcc", "libcudnn", "cuda-libraries", "libibverbs1", "ibverbs-providers"],
+          "pip": ["torch", "torchvision", "apex", "deepspeed", "allennlp"],
+          "other":["deepspeed", "nvcc"],
+          "scripts":{
+            "common":["deepspeed", "pytorch", "pytorch-cuda"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+        }
+      }
+    },
+    "DATACOPYADLS":{
+      "Required":{
+          "apt": ["python3.6", "git", "bzip2", "libibverbs1"],
+          "pip": ["tensorflow", "wheel"],
+          "other":[],
+          "scripts":{
+            "common":["tensorflow", "datacopy"],
+            "build":[],
+            "test":[],
+            "runtime":[]
+          }
+      }
+    }
+}

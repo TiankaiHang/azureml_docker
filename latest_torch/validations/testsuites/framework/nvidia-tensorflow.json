@@ -1,0 +1,5 @@
+{
+    "Required":{
+      "pip": ["tensorflow-gpu"]
+    }
+}

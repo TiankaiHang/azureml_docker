@@ -1,0 +1,10 @@
+{
+    "Required":
+    {
+        "apt": ["git", "jq", "netbase"],
+        "commands":["gosu", "python", "python3", "tini"]
+    },
+    "Recommended":{
+        "apt": ["criu"]
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "Required":
+    {
+        "scripts": ["env-store", "tcp-store"]
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "testsuites":{
+        "job":["*"],
+        "environment":["*"]
+    },
+    "timeout":"10"
+}

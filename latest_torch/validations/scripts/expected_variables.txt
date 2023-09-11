@@ -1,0 +1,13 @@
+DEBIAN_FRONTEND=noninteractive
+SINGULARITY_HOME=/opt/microsoft/singularity
+SINGULARITY_DATA_HOME=/var/data/microsoft/singularity
+SINGULARITY_LOCAL_DATA_HOME=/var/local/data/microsoft/singularity
+SINGULARITY_USER_NAME=aiscuser
+SINGULARITY_USER_HOME=/home/aiscuser
+SINGULARITY_USER_ID=9000
+SINGULARITY_USER_GROUP_NAME=aiscuser
+SINGULARITY_USER_GROUP_ID=9000
+SINGULARITY_IMAGE_VALIDATIONS=/opt/microsoft/_singularity/validations
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8
+LANGUAGE=en_US.UTF-8

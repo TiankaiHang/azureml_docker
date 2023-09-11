@@ -1,0 +1,10 @@
+{
+    "Required":{
+        "pip": ["allennlp", "apex", "deepspeed", "torch", "torchvision"],
+        "commands":["deepspeed"],
+        "scripts":["deepspeed", "pytorch"]
+    },
+    "Recommended":{
+        "scripts":["nccl"]
+    }
+}

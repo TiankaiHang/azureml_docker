@@ -1,0 +1,6 @@
+{
+    "testsuites":{
+        "environment":["*"]
+    },
+    "timeout":"10"
+}

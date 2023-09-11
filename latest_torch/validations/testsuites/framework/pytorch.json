@@ -1,0 +1,9 @@
+{
+    "Required":{
+        "pip": ["torch"],
+        "scripts":["pytorch"]
+    },
+    "Reccomended":{
+        "pip": ["numpy", "torchvision"]
+    }
+}

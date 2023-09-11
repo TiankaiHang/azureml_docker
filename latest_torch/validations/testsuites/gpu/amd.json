@@ -1,0 +1,17 @@
+{
+    "Required":{
+        "apt": ["rocm-clang-ocl",
+          "rocm-cmake",
+          "rocm-dbgapi",
+          "rocm-dev",
+          "rocm-device-libs",
+          "rocm-gdb",
+          "rocm-libs",
+          "rocm-opencl",
+          "rocm-opencl-dev",
+          "rocm-smi-lib",
+          "rocm-utils",
+          "rocminfo"],
+        "scripts":["rocm"]
+    }
+}

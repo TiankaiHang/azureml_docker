@@ -1,0 +1,7 @@
+{
+    "Required":{
+        "apt": ["bzip2", "git", "python"],
+        "pip": ["tensorflow", "wheel"],
+        "scripts":["datacopy", "tensorflow"]
+    }
+}

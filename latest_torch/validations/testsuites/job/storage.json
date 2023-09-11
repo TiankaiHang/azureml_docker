@@ -1,0 +1,12 @@
+{
+    "Required":
+    {
+        "apt": [
+            "blobfuse>=1.3.5",
+            "cifs-utils",
+            "fuse",
+            "mergerfs",
+            "nfs-common"
+        ]
+    }
+}

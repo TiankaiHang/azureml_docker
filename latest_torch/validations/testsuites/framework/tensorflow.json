@@ -1,0 +1,6 @@
+{
+    "Required":{
+        "pip": ["tensorflow"],
+        "scripts": ["tensorflow"]
+    }
+}

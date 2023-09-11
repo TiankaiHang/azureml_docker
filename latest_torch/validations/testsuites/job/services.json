@@ -1,0 +1,14 @@
+{
+    "Required":
+    {
+        "apt": [
+            "autossh",
+            "openssh-server",
+            "openssl",
+            "pdsh",
+            "supervisor",
+            "systemd"
+        ],
+        "scripts": ["jupyter", "supervisord", "tensorboard"]
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "Required":{
+        "commands":["nvcc"],
+        "scripts":["nccl"]
+    },
+    "Recommended":{
+        "apt": ["cuda", "cuda-nvcc", "ibverbs-providers", "libcudnn"]
+    }
+}
