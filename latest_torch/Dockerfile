@@ -124,4 +124,8 @@ RUN pip install tensorboard
 # ENV SINGULARITY_IMAGE_ACCELERATOR=NVIDIA
 # RUN /opt/microsoft/_singularity/validations/validator.sh
 
+# xformers
+RUN pip install ninja
+RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
+
 WORKDIR /root
