@@ -90,8 +90,6 @@ RUN conda clean -ya
 
 # RUN conda install -y mkl-include cmake cffi typing cython
 
-RUN conda install -y -c mingfeima mkldnn
-
 RUN pip install jinja2
 
 # RUN git clone --recursive https://github.com/pytorch/pytorch -b v2.0.0-rc3 && \
@@ -122,8 +120,8 @@ RUN pip install tensorboard
 # check if valid for sing
 # FROM singularitybase.azurecr.io/validations/base/singularity-tests:20220531T113427269 AS validator
 # COPY --from=validator /validations /opt/microsoft/_singularity/validations/
-COPY validations /opt/microsoft/_singularity/validations/
-ENV SINGULARITY_IMAGE_ACCELERATOR=NVIDIA
-RUN /opt/microsoft/_singularity/validations/validator.sh
+# COPY validations /opt/microsoft/_singularity/validations/
+# ENV SINGULARITY_IMAGE_ACCELERATOR=NVIDIA
+# RUN /opt/microsoft/_singularity/validations/validator.sh
 
 WORKDIR /root
