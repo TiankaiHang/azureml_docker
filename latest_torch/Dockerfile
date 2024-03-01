@@ -128,4 +128,11 @@ RUN pip install tensorboard
 RUN pip install ninja
 RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
 
+# apex
+git clone https://github.com/NVIDIA/apex.git
+cd apex
+git checkout 741bdf50825a97664db08574981962d66436d16a
+pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./ --global-option="--cuda_ext" --global-option="--cpp_ext"
+
+
 WORKDIR /root
