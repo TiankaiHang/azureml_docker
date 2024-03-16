@@ -1,4 +1,4 @@
-# Thanks for Jia Ning
+# Thanks Jia Ning
 
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
@@ -7,7 +7,7 @@ LABEL description="This docker has pytorch 2.0 with cuda 11.8, and cudnn 8.0." \
       tag="pytorch2.0-cuda11.8-openmpi" \
       creator="ninja" tooltype="pytorch" \
       tooltypeversion="2.0" \
-      createtime="03/01/2023"
+      createtime="03/15/2024"
 
 USER root:root
 
@@ -82,8 +82,10 @@ RUN pip install future tensorboard
 RUN conda config --add channels conda-forge
 
 # install pytorch2.0
-# RUN conda install -y cmake ninja mkl mkl-include
-# RUN conda install -y -c pytorch magma-cuda118
+RUN conda create -n torch python=3.10 -y
+# RUN conda install -y numpy pyyaml scipy ipython mkl scikit-learn matplotlib pandas setuptools Cython h5py graphviz
+# RUN conda activate torch
+SHELL ["conda", "run", "-n", "torch", "/bin/bash", "-c"]
 RUN conda install -y numpy pyyaml scipy ipython mkl scikit-learn matplotlib pandas setuptools Cython h5py graphviz
 
 RUN conda clean -ya
@@ -129,10 +131,11 @@ RUN pip install ninja
 RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
 
 # apex
-RUN git clone https://github.com/NVIDIA/apex.git
-RUN cd apex
-RUN git checkout 741bdf50825a97664db08574981962d66436d16a
-RUN pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./ --global-option="--cuda_ext" --global-option="--cpp_ext"
+RUN git clone https://github.com/NVIDIA/apex.git \
+    && cd apex \
+    && git checkout 741bdf50825a97664db08574981962d66436d16a \
+    && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./ --global-option="--cuda_ext" --global-option="--cpp_ext"
 
 
 WORKDIR /root
+ENTRYPOINT ["/bin/bash", "-c", "source activate torch && exec bash"] 
